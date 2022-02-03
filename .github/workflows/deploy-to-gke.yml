@@ -85,7 +85,7 @@ jobs:
         kubectl apply -f ./kubernetes/deployment.yml --namespace=${{inputs.namespace}}
         kubectl -n  ${{inputs.namespace}} rollout restart deployment calculator-service
         echo "🕚  - Wait 20s for service deployment"
-        #sleep 20s
+        sleep 20s
         #IP_SERVICE=$(kubectl get services -n ${{inputs.namespace}}  -o json | jq -r '.items[] | select(.metadata.name == "calculator-service") | .status.loadBalancer?|.ingress[]?|.ip')
         #echo "IP_SERVICE=$IP_SERVICE" >> $GITHUB_ENV
         #echo "🏁 - Service ${{ github.repository }} update in ${{inputs.namespace}} : http://$IP_SERVICE:8080 "
