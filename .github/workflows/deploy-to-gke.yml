@@ -80,13 +80,13 @@ jobs:
 
     - name: Deploy
       run: |-
-        #kubectl create namespace demo --dry-run=client -o json | kubectl apply -f -                 
+        #kubectl create namespace ${{inputs.namespace}} --dry-run=client -o json | kubectl apply -f -                 
         sed -i 's/IMAGE_TAG/main/g' kubernetes/deployment.yml 
-        kubectl apply -f ./kubernetes/deployment.yml --namespace=demo
-        kubectl -n  demo rollout restart deployment hello-from-go
+        kubectl apply -f ./kubernetes/deployment.yml --namespace=${{inputs.namespace}}
+        kubectl -n  ${{inputs.namespace}} rollout restart deployment hello-from-go
         echo "🕚  - Wait 20s for service deployment"
         #sleep 20s
-        #IP_SERVICE=$(kubectl get services -n demo  -o json | jq -r '.items[] | select(.metadata.name == "hello-from-go") | .status.loadBalancer?|.ingress[]?|.ip')
+        #IP_SERVICE=$(kubectl get services -n ${{inputs.namespace}}  -o json | jq -r '.items[] | select(.metadata.name == "hello-from-go") | .status.loadBalancer?|.ingress[]?|.ip')
         #echo "IP_SERVICE=$IP_SERVICE" >> $GITHUB_ENV
         #echo "🏁 - Service ${{ github.repository }} update in ${{inputs.namespace}} : http://$IP_SERVICE:8080 "
         #echo "::set-output name=service-url::http://$IP_SERVICE:8080"
