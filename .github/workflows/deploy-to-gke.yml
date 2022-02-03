@@ -4,9 +4,6 @@ name : "Deploy to Google Kubernetes Engine (GKE)"
 on: 
   workflow_call:
     inputs:
-      resource-group:
-        required: true
-        type: string        
       cluster-name:
         required: true
         type: string        
