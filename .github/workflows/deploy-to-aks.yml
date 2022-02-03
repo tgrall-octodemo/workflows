@@ -95,6 +95,6 @@ jobs:
     needs: [deploy]
     steps:
     - id: msg
-      name: " 👋  - Finishing Deployment to AKS"
-      run : echo " 👋👋👋  - Finishing Deployment to AKS"
+      name: " 🌩️  - Finishing Deployment to AKS"
+      run : echo " 🌩️  - Finishing Deployment to AKS"
       
