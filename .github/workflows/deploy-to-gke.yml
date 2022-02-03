@@ -80,7 +80,7 @@ jobs:
 
     - name: Deploy
       run: |-
-        #kubectl create namespace ${{inputs.namespace}} --dry-run=client -o json | kubectl apply -f -                 
+        kubectl create namespace ${{inputs.namespace}} --dry-run=client -o json | kubectl apply -f -                 
         sed -i 's/IMAGE_TAG/main/g' kubernetes/deployment.yml 
         kubectl apply -f ./kubernetes/deployment.yml --namespace=${{inputs.namespace}}
         kubectl -n  ${{inputs.namespace}} rollout restart deployment hello-from-go
