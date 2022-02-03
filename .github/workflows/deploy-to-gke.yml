@@ -79,6 +79,7 @@ jobs:
     # Deploy the Docker image to the GKE cluster
 
     - name: Deploy
+      id: kube-deploy
       run: |-
         kubectl create namespace ${{inputs.namespace}} --dry-run=client -o json | kubectl apply -f -                 
         sed -i 's/IMAGE_TAG/main/g' kubernetes/deployment.yml 
