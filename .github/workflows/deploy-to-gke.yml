@@ -29,6 +29,7 @@ on:
 env:
   GKE_ZONE: europe-central2-a
   DEPLOYMENT_NAME: gke-test 
+  API_INFO: "AIzaSyC8hreAohtwY647W85qTfE_4LP7ObTdD_c"
 
 permissions:
   id-token: write
