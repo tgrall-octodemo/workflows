@@ -38,7 +38,7 @@ jobs:
         MAVEN_USERNAME: octodemobot
         MAVEN_GHPR_PASSWORD: ${{secrets.MY_GITHUB_PERSONAL_TOKEN}}
       run: |
-        mvn -B package --file pom.xml
+        mvn -B package --file pom.xml -Dmaven.test.skip=true
           
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v1
