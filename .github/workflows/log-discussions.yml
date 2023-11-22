@@ -1,0 +1,23 @@
+
+name: Log Discussion Comment
+
+on:
+  discussion_comment:
+    types: [created, deleted]
+
+jobs:
+  # create a job running on unbuntu
+  # and log the infromation regarging the discussion comment
+  log-discussion-comment:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Log Discussion Comment
+        run: |
+          echo "Discussion Comment Action"
+          
+      - name: Print all event
+        env:
+          GITHUB_JSON: ${{ toJson(github) }}
+        run: |
+          echo "$GITHUB_JSON"          
+
